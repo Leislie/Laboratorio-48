@@ -1,0 +1,50 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Hecho con gusto por Leislie R. Manjarrez O.
+
+Laboratorio 48- Histograma con ggplot2
+
+Instalar paqueterias
+install.packages("gapminder")
+install.packages("ggplot2")
+
+Llamar la librerias
+```{r}
+library(gapminder)
+library(ggplot2)
+```
+
+Cargar los datos al entorno
+```{r}
+data("gapminder")
+```
+
+Filtrado por año 2007
+```{r}
+gapminder2007 <- gapminder[gapminder$year == '2007',]
+```
+
+Crear un histograma en ggplot2
+```{r}
+ggplot(data = gapminder2007,
+       mapping = aes(x= lifeExp))+
+  geom_histogram()
+```
+
+Hacer un histograma en ggplot2 con 9 intervalos (bins)
+```{r}
+ggplot(data = gapminder2007,
+       mapping = aes(x= lifeExp))+
+  geom_histogram(bins = 9)
+```
+
+Colorear por continente el histograma anterior
+```{r}
+ggplot(data = gapminder2007,
+       mapping = aes(x= lifeExp,
+                     fill = factor(continent)))+
+  geom_histogram(bins = 9)
+```
